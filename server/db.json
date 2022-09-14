@@ -1,0 +1,76 @@
+{
+  "contacts": [
+    {
+      "id": "A993838",
+      "name": "Thomas Edison",
+      "company": "Google",
+      "email": "thomasEdison@gmail.com",
+      "title": "Front End Developer",
+      "mobile": "1213848446",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAEEsRlRZm43yeGkcOCGhOOhnXEmpmc-E58QPinoVBrcohVqKOT_3B5whs00AebvAnodM&usqp=CAU",
+      "groupId": "3"
+    },
+    {
+      "name": "Henry",
+      "photo": "https://previews.123rf.com/images/pandavector/pandavector1901/pandavector190105171/126078877-vector-design-of-avatar-and-dummy-symbol-set-of-avatar-and-image-stock-vector-illustration-.jpg",
+      "mobile": "8182838485",
+      "email": "henrytyy@gmail.com",
+      "company": "Alphabet",
+      "title": "Software Developer",
+      "id": "tlyB8ba"
+    },
+    {
+      "name": "Tayo Tafafa",
+      "photo": "https://i.pinimg.com/474x/38/1e/c0/381ec006034984c22f0db62451b10e67.jpg",
+      "mobile": "091818181",
+      "email": "tayo-tafa@gmail.com",
+      "company": "XYZ",
+      "title": "Alaga",
+      "id": "Nqa3jNH"
+    }
+  ],
+  "groups": [
+    {
+      "id": "1",
+      "name": "Colleage"
+    },
+    {
+      "id": "2",
+      "name": "Mate"
+    },
+    {
+      "id": "3",
+      "name": "Family"
+    },
+    {
+      "id": "4",
+      "name": "Service"
+    },
+    {
+      "id": "5",
+      "name": "Community"
+    },
+    {
+      "id": "6",
+      "name": "Social"
+    },
+    {
+      "name": "Bayo",
+      "photo": "https://cdn.pixabay.com/photo/2014/04/03/11/56/avatar-312603_640.png",
+      "mobile": "919199911",
+      "email": "bayo@yahoo.com",
+      "company": "Zoro",
+      "title": "Back end Developer",
+      "id": "ctrFv-h"
+    },
+    {
+      "name": "Bayo",
+      "photo": "https://cdn.pixabay.com/photo/2014/04/03/11/56/avatar-312603_640.png",
+      "mobile": "7373737333",
+      "email": "bayo@yahoo.com",
+      "company": "Facebook",
+      "title": "Back end developer",
+      "id": "zo5A1Rq"
+    }
+  ]
+}

@@ -1,12 +1,13 @@
 import React from 'react'; 
-import loading from '../../assets/img/images.png'
+import spinner from '../../assets/200w.gif'
 
 const Spinner = () => {
   return (
-    <div>
-        <img src={loading} alt='spinner' className='db-block m-auto' style={{width:"200px"}}/>
-        <h2 className='fw-bold'>loading...</h2>
-    </div>
+    <>
+    <section className='h2'>
+        <img src={spinner} alt="loading"  className="d-block m-auto"/>
+    </section>
+    </>
   )
 }
 

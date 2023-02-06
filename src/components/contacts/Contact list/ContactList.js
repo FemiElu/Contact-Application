@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react'; 
+import React,{ useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ContactService } from '../../../services/ContactServices';
 import Spinner from '../../spinner/Spinner';
@@ -10,14 +10,14 @@ const ContactList = () => {
     })
 
 
-    const {contactId} = useParams(); 
+    const {contactId} = useParams();
 
     const [state, setState] = useState({
-        loading:false, 
+        loading:false,
         contacts:[],
         filteredContacts:[],
         errorMessage:''
-    }); 
+    });
 
     const searchContacts=(e)=>{
         setQuery({
@@ -32,7 +32,7 @@ const ContactList = () => {
     }
 
     const fetchContacts = async() =>{
-        setState({...state, loading:true}); 
+        setState({...state, loading:true});
         try {
             const response = await ContactService.getAllContacts();
         setState((state)=>{
@@ -49,13 +49,13 @@ const ContactList = () => {
 
     const onClickDelete =async (contactId) =>{
         try {
-            const response = await ContactService.deleteContact(contactId); 
-        
+            const response = await ContactService.deleteContact(contactId);
+
             if(response) {
                 setState((state)=>{
                     return {...state, loading:true}
                 })
-                let response = await ContactService.getAllContacts(); 
+                let response = await ContactService.getAllContacts();
                 setState({...state, loading:false, contacts:response.data, filteredContacts:response.data})
             }
         } catch (error) {
@@ -63,7 +63,7 @@ const ContactList = () => {
         }
     }
 
-    const {loading, contacts, error, filteredContacts} = state; 
+    const {loading, contacts, error, filteredContacts} = state;
 
   return (
     <React.Fragment>
@@ -71,11 +71,11 @@ const ContactList = () => {
             <div className='container'>
                 <div className='row'>
                 <div className='col'>
-                    <p className='h3'>Contact Manager 
+                    <p className='h3'>Contact Manager
                     <Link to={'/contacts/add'}>
                     <span className='btn btn-success ms-3'>
                         <i className='fa fa-plus-circle me-2'/>New
-                        </span> </Link></p> 
+                        </span> </Link></p>
                         <p className='fst-italic'>This is where we list all the contacts for everyone to see</p>
                 </div>
                 </div>
@@ -97,8 +97,8 @@ const ContactList = () => {
                         <div className='col'>
                         <div className='mb-2'>
                         <input type='submit' className='btn btn-outline-success' value='Search'/>
-                        </div> 
-                        </div>            
+                        </div>
+                        </div>
                     </form>
                     </div>
                 </div>
@@ -130,10 +130,10 @@ const ContactList = () => {
                                                 <li className='list-group-item list-group-item-action'>
                                                     Email: <span className='fw-bold'>{contact.email}</span>
                                                 </li>
-                                                
+
                                             </ul>
                                             </div>
-        
+
                                             <div className='col-md-1 d-flex flex-column align-items-center'>
                                            <Link to={`/contacts/view/${contact.id}`} className='btn btn-warning my-1'>
                                             <i className='fa fa-eye'/>
@@ -144,20 +144,20 @@ const ContactList = () => {
                                            <button className='btn btn-danger my-1' onClick={()=>onClickDelete(contact.id)}>
                                             <i className='fa fa-trash'/>
                                            </button>
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                        
+
                     )
                 })
             }
-           
 
-                    
+
+
                 </div>
             </div>
 
@@ -170,3 +170,160 @@ const ContactList = () => {
 }
 
 export default ContactList
+
+// import React, { useState, useEffect } from 'react';
+// import { Link, Navigate } from 'react-router-dom';
+// import { ContactService } from '../../../services/ContactServices';
+// import Spinner from '../../spinner/Spinner';
+
+
+
+// const ContactList = () => {
+
+//     const [state, setState] = useState({
+//         loading:false,
+//         contacts:[],
+//         errorMsg:"",
+//         filteredContacts:[]
+//     });
+
+//     const [query, setQuery] = useState({
+//     }); 
+
+//     const searchContacts =(e)=>{
+//         setState({...query, text:e.target.value})
+//     }
+    
+
+//     const fetchAllContacts = async() =>{
+//         try {
+//             setState({...state, loading:true,})
+//         let response = await ContactService.getAllContacts(); 
+//         setState({...state, loading:false, contacts:response.data, filteredContacts:response.data})
+//         // console.log(state)
+//         } catch (error) {
+//             setState({loading:false, errorMsg: error.message})
+//         }; 
+
+//     }
+
+//     useEffect(()=>{
+//         fetchAllContacts();;
+//      },[]); 
+     
+//  const { loading, errorMsg, contacts, filteredContacts }= state; 
+
+//  console.log(contacts); 
+
+//   const clickDelete = async(contactId)=>{
+//     try {
+//         let response = await ContactService.deleteContact(contactId)
+//          if(response) {
+//             setState({...state, loading:true}); 
+//             let response = await ContactService.getAllContacts(); 
+//             setState({...state, loading:false, contacts:response.data, filteredContacts:response.data})
+//          }
+//     } catch (error) {
+//         setState({...state, errorMsg:error.message}); 
+//     }
+//   }
+        
+//   return (
+//      <>
+//      <section className='contact-search'>
+//         <div className='container'>
+//             <div className='grid'>
+//                 <div className='row'>
+//                     <div className='col'>
+//                         <p className='h3'>Contact Manager
+//                         <Link to={'/contacts/add'} className='btn btn-primary ms-2'>
+//                         <i className='fa fa-plus-circle me-2'/> New
+//                         </Link>
+//                         </p>
+//                         <p className='fst-italic'>
+//                             This is where we list all our contacts
+//                         </p>
+//                     </div>
+//                 </div>
+//                 <div className='row'>
+//                     <div className='col-md-6'>
+//                     <form className='row'>
+//                         <div className='col'>
+//                      <div className='mb-2'>
+//                         <input type='text' className='form-control' placeholder='Search Names' name="text"/>
+//                      </div>
+//                      </div>
+//                      <div className='col'>
+//                      <div className='mb-2'>
+//                         <input type='submit' className='btn btn-outline-dark' value="Search"/>
+//                      </div>
+//                      </div>
+//                     </form>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//      </section>
+
+//      {
+//         loading? <Spinner/>: 
+//         <>   
+//         <section className='contact-list'>
+//         <div className='container'>
+//             <div className='row'>
+//                 {
+//                     contacts.map((contact)=>{
+//                         const {id, photo, name, mobile, email} = contact; 
+//                         return (        
+//                     <div className='col-md-6'>
+//                     <div className='card my-2'>
+//                         <div className='card-body'>
+//                             <div className='row align-items-center d-flex justify-content-center'>
+//                             <div className='col-md-4'>
+                                
+//                             <img src={photo} alt='img_1' className="contact-img"/>
+//                             </div>
+//                             <div className='col-md-7'>
+//                                 <ul className='list-group'>
+//                                 <li className='list-group-item list-group-item-action'>
+//                                     Name: <span className='fw-bold'>{name}</span>
+//                                 </li>
+//                                 <li className='list-group-item list-group-item-action'>
+//                                     Mobil: <span className='fw-bold'>{mobile}</span>
+//                                 </li>
+//                                 <li className='list-group-item list-group-item-action'>
+//                                     Email: <span className='fw-bold'>{email}</span>
+//                                 </li>
+//                                 </ul>
+
+//                             </div>
+//                             <div className='col-md-1 d-flex flex-column align-items-center'>
+//                                 <Link to={`/contacts/view/${id}`} className='btn btn-warning my-1'>
+//                                     <i className='fa fa-eye'/>
+//                                 </Link>
+//                                 <Link to={`/contacts/edit/${id}`} className='btn btn-primary my-1'>
+//                                     <i className='fa fa-pen'/>
+//                                 </Link>
+//                                 <button className='btn btn-danger' onClick={()=>clickDelete(id)}>
+//                                 <i className='fa fa-trash'/></button>
+
+//                             </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//                         )
+//                     })
+//                 }
+                
+//             </div>
+//         </div>
+//      </section>
+//         </>
+//      }
+     
+//      </>
+//   )
+// }
+
+// export default ContactList
